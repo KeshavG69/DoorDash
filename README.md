@@ -100,16 +100,21 @@ python main.py
 
 ---
 
-
-## 🤝 **Contributions**  
-This project is a learning exercise inspired by DoorDash's automation system, which has revolutionized customer support for Dashers. While the project is not affiliated with DoorDash, it owes credit to their approach for serving as a guide.  
-
-Contributions are welcome! Feel free to fork the repository, create a feature branch, and submit a pull request.  
+## 🌐 **Read More About It**  
+Want to dive deeper into how this project was built? Check out my detailed Medium article:  
+[**Building a Dasher Support Automation System: My Journey Replicating DoorDash’s Approach**](https://medium.com/@gargkeshav204/building-a-dasher-support-automation-system-my-journey-replicating-doordashs-approach-8837ead9bbd1)  
 
 ---
 
-## 📜 **License**  
-This project is licensed under the MIT License.  
+
+## 🤝 **Acknowledgments**  
+This project is inspired by DoorDash's original Dasher support automation system. While this implementation is an independent learning exercise, full credit goes to DoorDash for their innovative approach, as outlined in their [official blog](https://careersatdoordash.com/blog/large-language-modules-based-dasher-support-automation/).  
+
+---
+
+## 🤝 **Contributions**  
+Contributions are welcome! Feel free to fork the repository, create a feature branch, and submit a pull request.  
+
 
 ---
 
