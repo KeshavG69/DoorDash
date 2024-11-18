@@ -210,6 +210,7 @@ You are a highly intelligent and context-aware assistant specializing in generat
   query=state['query']
   context=[]
   context_without_link=[]
+  chat_history=state['chat_history']
   summarised_query=summarise_chain.invoke({'chat_history':chat_history,'question':query})
 
   relevant_documents=vectorstore.similarity_search(summarised_query,k=7)
@@ -300,9 +301,9 @@ def answer(state):
   query=state['query']
   generation=state['generation']
 
-  answer_chain=answer_chain.invoke({'llm_response':generation,'query':query})
+  answer_chain1=answer_chain.invoke({'llm_response':generation,'query':query})
 
-  if answer_chain.binary_score=='yes':
+  if answer_chain1.binary_score=='yes':
     print('Answer Passed')
     return {'documents':documents,'question':query,'generation':generation,'groundness':'yes','coherence':'yes','compliance':'yes','similarity_search':'no','answer':'yes'}
   else:
@@ -315,13 +316,13 @@ def send_user(state):
   query=state['query']
   generation=state['generation']
   print('Answer Sent to User')
-  print(generation)
+  return {'generation':generation}
 
 def human_support(state):
   documents=state['documents']
   query=state['query']
   generation=state['generation']
-  print('Human Support')
+  return {'generation':'Human Support'}
 
 
 def sim_edge(state):
@@ -401,9 +402,10 @@ workflow.add_conditional_edges('answers',answer_edge,
 workflow.add_edge("send_user", END)
 app = workflow.compile()
 
-chat_history=[]
-while True:
-  query=input('Input Query: ')
-  if query.lower()=='quit':
-    break
-  app.invoke ({'query':query})
+# chat_history=[]
+# while True:
+#   query=input('Input Query: ')
+#   if query.lower()=='quit':
+#     break
+#   response=app.invoke ({'query':query,'chat_history':chat_history})
+#   print(response['generation'])
