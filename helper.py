@@ -34,7 +34,7 @@ load_dotenv()
 
 llm = ChatGroq(
     temperature=0.1,
-    groq_api_key=st.secrets["GROQ_API_KEY"],
+    groq_api_key=st.secrets["GROQ_API_KEY"),
     model_name="llama-3.1-70b-versatile",
     streaming=True,
 )
@@ -77,6 +77,7 @@ Highlight the main topic or purpose of the article in one sentence.
 Identify key points, features, or solutions addressed in the article.
 Provide any relevant details that distinguish the article from others in similar domains.
 Avoid unnecessary jargon or excessive details—focus on actionable information.
+Make sure to give more emphasise on the last question ie the question that comes in the end of the list .
 </Rules>
 
 <Document>
