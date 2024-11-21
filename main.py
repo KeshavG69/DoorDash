@@ -1,4 +1,6 @@
 from helper import *
+from langchain_pinecone import PineconeVectorStore
+from pinecone import Pinecone, ServerlessSpec
 
 
 path='DoorDashArticleSummary.csv'
@@ -31,10 +33,8 @@ articles=df['Sub Article Text'].tolist()
 summary=df['Sub Article Summaries'].tolist()
 
 
-
-vectorstore = Chroma(collection_name="doordash",
-                     embedding_function=embd,
-                     persist_directory="database")
+pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
+vectorstore = PineconeVectorStore(index=pc.Index('doordash'), embedding=embd)
 
 summarise_query_template='''
 Summarize the following chat conversation between a DoorDash Dasher and customer support, and extract a brief issue description that captures the key problem or request. The summary should be specific and actionable, so that it can be used to search for relevant articles in a knowledge base or vector database. Avoid unnecessary details, focusing only on the essential information for article retrieval.
