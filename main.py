@@ -251,7 +251,7 @@ def sim_search(state):
 
   splits=text_splitter.split_documents(documents)
   overall_similarity = compute_overall_similarity(generation, splits)
-  if overall_similarity>0.70:
+  if overall_similarity>0.60:
     print('Similarity Search Passed')
     return {'documents':documents,'question':query,'generation':generation,'similarity_search':'yes'}
   else:
