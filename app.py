@@ -1,9 +1,8 @@
 import streamlit as st
 from main import *
-from hugchat import hugchat
-from hugchat.login import Login
 
-st.set_page_config(page_title="🤗💬 HugChat")
+
+st.set_page_config(page_title="Doordash Dasher Support 🍽️📦")
 
 if "messages" not in st.session_state.keys():
     
