@@ -4,13 +4,21 @@ from dotenv import load_dotenv
 import os
 import time
 from helper import embd
-from main import summary_docs
+import json
+from langchain_core.documents import Document
+import streamlit as st
 
 load_dotenv()
 
+with open("summary.json", "r") as file:
+    loaded_documents = json.load(file)
+summary_docs = [
+    Document(page_content=doc["page_content"], metadata=doc["metadata"])
+    for doc in loaded_documents
+]
 
 
-pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+pc = Pinecone(api_key=st.secrets["PINECONE_API_KEY"])
 
 
 index_name = "doordash"  # change if desired
