@@ -3,6 +3,7 @@ from langchain_pinecone import PineconeVectorStore
 from pinecone import Pinecone, ServerlessSpec
 
 
+
 path='DoorDashArticleSummary.csv'
 
 
@@ -33,7 +34,7 @@ articles=df['Sub Article Text'].tolist()
 summary=df['Sub Article Summaries'].tolist()
 
 
-pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
+pc = Pinecone(api_key=st.secrets['PINECONE_API_KEY'])
 vectorstore = PineconeVectorStore(index=pc.Index('doordash'), embedding=embd)
 
 summarise_query_template='''
