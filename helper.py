@@ -1,13 +1,14 @@
 import pandas as pd
 import numpy as np
-from langchain.retrievers.multi_vector import MultiVectorRetriever
+import streamlit as st
+
 import uuid
 from typing import List
 
 from typing_extensions import TypedDict
 from langgraph.graph import END, StateGraph, START
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List,Dict
 import cohere
 from langchain_core.documents import Document
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
@@ -27,19 +28,19 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
-from langchain.storage import InMemoryByteStore
+
 
 load_dotenv()
 
 llm = ChatGroq(
     temperature=0.1,
-    groq_api_key=os.getenv("GROQ_API_KEY"),
+    groq_api_key=st.secrets["GROQ_API_KEY"),
     model_name="llama-3.1-70b-versatile",
     streaming=True,
 )
 llm90 = ChatGroq(
     temperature=0.1,
-    groq_api_key=os.getenv("GROQ_API_KEY"),
+    groq_api_key=st.secrets["GROQ_API_KEY"],
     model_name="llama-3.2-90b-vision-preview",
     streaming=True,
 )
@@ -47,16 +48,16 @@ llm90 = ChatGroq(
 llm_together = ChatTogether(
     model="meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
     temperature=0.1,
-    api_key=os.getenv("TOGETHER_API_KEY"),
+    api_key=st.secrets["TOGETHER_API_KEY"],
     streaming=True,
 )
 
 
-co = cohere.Client(os.getenv("COHERE_API_KEY"))
+co = cohere.Client(st.secrets["COHERE_API_KEY"])
 
 embeddings = CohereEmbeddings(
     model="embed-english-v3.0",
-    cohere_api_key=os.getenv("COHERE_API_KEY"),
+    cohere_api_key=st.secrets["COHERE_API_KEY"],
 )
 
 embd = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
