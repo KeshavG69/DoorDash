@@ -39,7 +39,7 @@ vectorstore = Chroma(collection_name="doordash",
 summarise_query_template='''
 Summarize the following chat conversation between a DoorDash Dasher and customer support, and extract a brief issue description that captures the key problem or request. The summary should be specific and actionable, so that it can be used to search for relevant articles in a knowledge base or vector database. Avoid unnecessary details, focusing only on the essential information for article retrieval.
 Do NOT answer the question, just reformulate it if needed and otherwise return it as is.
-Only return Summarised question and nothing else
+Only return Summarised question and nothing else.Make sure the question compasses the entire conversation and is clear and concise.
 Dont write Summary: 
 only return the question and nothing else
 Chat conversation:
@@ -212,6 +212,8 @@ You are a highly intelligent and context-aware assistant specializing in generat
   context_without_link=[]
   chat_history=state['chat_history']
   summarised_query=summarise_chain.invoke({'chat_history':chat_history,'question':query})
+  print(summarised_query)
+  print(chat_history)
 
   relevant_documents=vectorstore.similarity_search(summarised_query,k=7)
   keys = [doc.metadata['doc_id'] for doc in relevant_documents]
@@ -234,8 +236,8 @@ You are a highly intelligent and context-aware assistant specializing in generat
   prompt=ChatPromptTemplate.from_template(gen_template)
   gen_chain={'docs':lambda x: top_docs,'query':RunnablePassthrough()}|prompt|llm_together|StrOutputParser()
   generation=gen_chain.invoke({'query':summarised_query})
-  chat_history.append(HumanMessage(content=query))
-  chat_history.append(SystemMessage(content=generation))
+  # chat_history.append(query)
+  # chat_history.append(generation)
   print(summarised_query)
   return {'documents':top_docs_with_link,'question':query,'generation':generation,'chat_history':chat_history}
 
