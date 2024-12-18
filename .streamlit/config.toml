@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#FF3008"          # DoorDash Red for accents and buttons
+backgroundColor = "#FDFDFD"       # Soft white for the main background
+secondaryBackgroundColor = "#F5F5F5" # Light gray for sidebar and sections
+textColor = "#2C2C2C"             # Dark gray for text readability
+font = "sans serif"               # Modern font for a clean look
