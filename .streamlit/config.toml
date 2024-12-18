@@ -1,6 +1,6 @@
 [theme]
-primaryColor = "#FFFFFF"          # White for text and key accents
-backgroundColor = "#FF3008"       # DoorDash Red for the main background
-secondaryBackgroundColor = "#FFEFEA" # Soft Coral for chat bubbles or sections
-textColor = "#FFFFFF"             # White for maximum readability on the red background
-font = "sans serif"               # Clean, modern sans-serif font
+primaryColor = "#FFFFFF"          # Clean White for text and highlights
+backgroundColor = "#FF3E30"       # Modern Red for the main background (less harsh than pure red)
+secondaryBackgroundColor = "#FFDAD4" # Light Coral for chat bubbles or sections
+textColor = "#FFFFFF"             # White for high contrast against the red background
+font = "sans serif"               # Modern, clean font (like Roboto or Arial)
