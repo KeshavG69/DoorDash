@@ -43,7 +43,7 @@ This repository contains a project that automates support for Dashers using **la
    ```
 
 3. **Set Up Environment Variables**:  
-   Add your API keys for OpenAI, Pinecone, and Cohere in an `.env` file:  
+   Add your API keys for Tohether, Groq, and Cohere in an `.env` file:  
    ```env
    GROQ_API_KEY=your_groq_key
    TOGETHER_API_KEY=your_together_key
