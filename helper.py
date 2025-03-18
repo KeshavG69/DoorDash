@@ -35,7 +35,7 @@ load_dotenv()
 llm = ChatGroq(
     temperature=0.1,
     groq_api_key=st.secrets["GROQ_API_KEY"],
-    model_name="llama-3.1-70b-versatile",
+    model_name="llama-3.3-70b-versatile",
     streaming=True,
 )
 llm90 = ChatGroq(
