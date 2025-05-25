@@ -21,3 +21,4 @@ def test_state_graph_transitions():
     state = main.init_state()
     next_state = main.state_graph[state]
     assert isinstance(next_state, str) or next_state is null
+
